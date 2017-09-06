@@ -1,3 +1,8 @@
+#Caching the inverse of a Matrix
+#Caching a previous generated data is useful because it improve
+#the efficient by reducing the processing time
+
+#This function creates a matrix that can cache its inverse
 makeCacheMatrix<-function(x=matrix()) {
   inv<-NULL
   set<-function(y) {
@@ -10,6 +15,8 @@ makeCacheMatrix<-function(x=matrix()) {
   list(set=set,get=get,setinverse=setinverse,getinverse=getinverse)
 }
 
+#This function calculte the inverse of the matrix created by the makeCacheMatrix function above
+#if the inverse has been previously calculated, it won't doing again, saving processing time
 cachesolve<-function(x,...) {
   inv<-x$getinverse()
   if(!is.null(inv)) {
